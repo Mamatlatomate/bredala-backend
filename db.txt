@@ -1,0 +1,19 @@
+recipes
+> Titre
+> Résumé 
+> Contenu
+> Ingrédients
+> Image
+> Catégories / Tags
+
+views_count
+> views
+> recipe_id
+
+stars
+> nb / 5
+> recipe_id 
+
+pages (option)
+> Titre
+> Contenu
