@@ -14,7 +14,14 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('summary')->nullable();
+            $table->text('body')->nullable();
+            $table->json('ingredients')->nullable();
+            $table->json('utensils')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
