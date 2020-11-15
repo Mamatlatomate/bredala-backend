@@ -17,11 +17,15 @@ class CreateRecipesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('slug');
-            $table->text('summary')->nullable();
             $table->text('body')->nullable();
             $table->json('ingredients')->nullable();
             $table->json('utensils')->nullable();
             $table->string('image')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('difficulty')->nullable();
+            $table->string('price')->nullable();
+            $table->string('quantity')->nullable();
+            $table->text('advice')->nullable();
             $table->timestamps();
         });
     }

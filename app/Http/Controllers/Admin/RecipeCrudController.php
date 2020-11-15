@@ -39,13 +39,8 @@ class RecipeCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        CRUD::column('image')->type('image')->label('Image');
+        CRUD::column('title')->type('text')->label('Titre');
     }
 
     /**
@@ -58,37 +53,70 @@ class RecipeCrudController extends CrudController
     {
         CRUD::setValidation(RecipeRequest::class);
 
-        CRUD::field('title')->type('text')->label('Titre');
+        CRUD::field('title')->type('text')->label('Titre')->tab('Recette');
 
-        CRUD::field('summary')->type('textarea')->label('Résumé');
+        CRUD::field('duration')
+            ->type('text')
+            ->label('Temps de réalisation')
+            ->suffix('<i class="las la-hourglass-half"></i>')
+            ->size(6)
+            ->tab('Recette');
 
-        CRUD::field('body')->type('ckeditor')->label('Contenu');
+        CRUD::field('difficulty')
+            ->type('text')
+            ->label('Difficulté')
+            ->suffix('<i class="la la-signal"></i>')
+            ->size(6)
+            ->tab('Recette');
+
+        CRUD::field('price')
+            ->type('text')
+            ->label('Prix de revient')
+            ->suffix('<i class="la la-euro-sign"></i>')
+            ->size(6)
+            ->tab('Recette');
+
+        CRUD::field('quantity')
+            ->type('text')
+            ->label('Quantité')
+            ->hint('Exemple : "Pour 6 personnes" ou "Pour environ 20 gâteaux"')
+            ->size(6)
+            ->tab('Recette');
+
+        CRUD::field('advice')
+            ->type('textarea')
+            ->label('Les conseils de Mamema')
+            ->tab('Recette');
+
+        CRUD::field('body')->type('ckeditor')->label('Contenu')->tab('Contenu');
 
         CRUD::field('ingredients')
             ->type('table')
             ->label('Ingrédients')
             ->columns(['name' => 'Nom', 'quantity' => 'Quantité'])
-            ->entity_singular('un ingredient');
+            ->entity_singular('un ingredient')
+            ->tab('Recette');
 
         CRUD::field('utensils')
             ->type('table')
             ->label('Ustensiles')
             ->columns(['name' => 'Nom'])
-            ->entity_singular('un ustensile');
+            ->entity_singular('un ustensile')
+            ->tab('Recette');
 
-        CRUD::field('tags')->type('relationship')->label('Tags')->inline_create(['entity' => 'tag']);
+        CRUD::field('tags')
+            ->type('relationship')
+            ->label('Catégories')
+            ->inline_create(['entity' => 'tag'])
+            ->tab('Recette');
 
-        CRUD::field('image')->type('image')->label('Image')->upload(true)->crop(true)->prefix('storage/');
-
-        $this->crud->addField([
-            'name'   => 'image',
-            'type'   => 'image',
-            'label'  => 'Image',
-            'upload' => true,
-            'crop'   => true,
-            'prefix' => 'storage/',
-            'tab'    => 'Contenu',
-        ]);
+        CRUD::field('image')
+            ->type('image')
+            ->label('Image')
+            ->upload(true)
+            ->crop(true)
+            ->prefix('storage/')
+            ->tab('Recette');
     }
 
     /**

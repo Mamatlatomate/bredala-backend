@@ -28,7 +28,7 @@ class TagCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Tag::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/tag');
-        CRUD::setEntityNameStrings('tag', 'tags');
+        CRUD::setEntityNameStrings('catégorie', 'catégories');
     }
 
     /**

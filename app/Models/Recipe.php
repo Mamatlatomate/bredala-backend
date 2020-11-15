@@ -17,11 +17,15 @@ class Recipe extends Model
     protected $fillable = [
         'title',
         'slug',
-        'summary',
         'body',
         'ingredients',
         'utensils',
         'image',
+        'duration',
+        'difficulty',
+        'price',
+        'quantity',
+        'advice',
     ];
     protected $casts = [
         'ingredients' => 'object',
