@@ -59,4 +59,9 @@ class Recipe extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+
+    public function rating()
+    {
+        return $this->hasOne(RatingRecipe::class);
+    }
 }
