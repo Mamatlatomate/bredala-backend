@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Look & feel customizations
@@ -163,7 +162,7 @@ return [
     | By default the registration is open only on localhost.
     */
 
-    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', env('APP_ENV') === 'local'),
+    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', 'local' === env('APP_ENV')),
 
     /*
     |--------------------------------------------------------------------------

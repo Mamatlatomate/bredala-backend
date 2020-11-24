@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Backpack\CRUD preferences
@@ -12,7 +11,6 @@ return [
     // Default operation settings
     // --------------------------
     'operations' => [
-
         /*
          * List Operation
          */
@@ -153,7 +151,6 @@ return [
             // To override per Controller use $this->crud->setReorderContentClass('class-string')
             'contentClass'   => 'col-md-8 col-md-offset-2',
         ],
-
     ],
 
     /*
@@ -372,7 +369,7 @@ return [
         // "ga" => "Irish",
         // "it_IT" => "Italian (Italy)",
         // "it_CH" => "Italian (Switzerland)",
-//        'it' => 'Italian',
+        //        'it' => 'Italian',
         // "ja_JP" => "Japanese (Japan)",
         // "ja" => "Japanese",
         // "kea_CV" => "Kabuverdianu (Cape Verde)",
@@ -477,7 +474,7 @@ return [
         // "pa" => "Punjabi",
         // "ro_MD" => "Romanian (Moldova)",
         // "ro_RO" => "Romanian (Romania)",
-//        'ro' => 'Romanian',
+        //        'ro' => 'Romanian',
         // "rm_CH" => "Romansh (Switzerland)",
         // "rm" => "Romansh",
         // "rof_TZ" => "Rombo (Tanzania)",
@@ -601,5 +598,4 @@ return [
         // "zu_ZA" => "Zulu (South Africa)",
         // "zu" => "Zulu"
     ],
-
 ];

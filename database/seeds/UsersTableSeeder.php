@@ -14,7 +14,6 @@ class UsersTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
         \App\User::all()->each->delete();
 
-         factory(\App\User::class)->create(['name' => 'Mathieu', 'email' => 'mathieu15.monnier@gmail.com']);
+        factory(\App\User::class)->create(['name' => 'Mathieu', 'email' => 'mathieu15.monnier@gmail.com']);
     }
 }
-
