@@ -18,4 +18,8 @@ Route::group([
     'namespace'  => 'Api',
 ], function () {
     Route::get('/recipes', 'RecipeController@index')->name('recipes.index');
+    Route::get('/recipe/{recipe}', 'RecipeController@show')->name('recipes.show');
+
+    Route::get('/tags', 'TagController@index')->name('tags.index');
+    Route::get('/tag/{tag}', 'TagController@show')->name('tags.show');
 });

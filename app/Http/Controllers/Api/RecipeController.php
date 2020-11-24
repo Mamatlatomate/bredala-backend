@@ -13,4 +13,9 @@ class RecipeController extends ApiController
 
         return fractal($recipes, new RecipeTransformer());
     }
+
+    public function show(Recipe $recipe)
+    {
+        return fractal($recipe, new RecipeTransformer());
+    }
 }

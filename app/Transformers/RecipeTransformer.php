@@ -7,6 +7,8 @@ use League\Fractal\TransformerAbstract;
 
 class RecipeTransformer extends TransformerAbstract
 {
+    protected $defaultIncludes = ['tags'];
+
     public function transform(Recipe $recipe)
     {
         $url = request()->getSchemeAndHttpHost();
@@ -27,5 +29,10 @@ class RecipeTransformer extends TransformerAbstract
         );
 
         return $attributes;
+    }
+
+    public function includeTags(Recipe $recipe)
+    {
+        return $this->collection($recipe->tags, new TagTransformer());
     }
 }
