@@ -7,15 +7,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Recipe::class, function (Faker $faker) {
     return [
-        'title' => ucfirst($faker->words(4, true)),
-        'body',
-        'ingredients',
-        'utensils',
-        'image',
-        'duration'   => $faker->randomNumber(0).' '.$faker->randomElement(['heures', 'minutes']),
-        'difficulty' => $faker->randomElement(['Facile', 'Moyen', 'Difficile']),
-        'price'      => $faker->randomNumber(0).'€',
-        'quantity'   => $faker->randomNumber(0).' biscuits',
-        'advice'     => $faker->sentence,
+        'title'        => ucfirst($faker->words(4, true)),
+        'body'         => $faker->paragraphs(9, true),
+        'duration'     => $faker->numberBetween(1, 10).' '.$faker->randomElement(['heures', 'minutes']),
+        'difficulty'   => $faker->randomElement(['Facile', 'Moyenne', 'Difficile']),
+        'price'        => $faker->numberBetween(1, 50).' €',
+        'quantity'     => $faker->numberBetween(1, 50).' biscuits',
+        'advice'       => $faker->sentence,
     ];
 });

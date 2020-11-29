@@ -72,9 +72,9 @@ class RecipeCrudController extends CrudController
             ->tab('Recette');
 
         CRUD::field('difficulty')
-            ->type('text')
+            ->type('select_from_array')
             ->label('Difficulté')
-            ->suffix('<i class="la la-signal"></i>')
+            ->options(['Facile', 'Moyenne', 'Difficile'])
             ->size(6)
             ->tab('Recette');
 

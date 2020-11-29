@@ -1,0 +1,2 @@
+php artisan backpack:install
+php artisan backpack:filemanager:install
