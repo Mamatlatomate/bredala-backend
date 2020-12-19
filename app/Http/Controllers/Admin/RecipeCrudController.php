@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Tag;
 use App\Models\Recipe;
 use App\Http\Requests\RecipeRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -19,6 +20,7 @@ class RecipeCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -116,6 +118,7 @@ class RecipeCrudController extends CrudController
         CRUD::field('tags')
             ->type('relationship')
             ->label('Catégories')
+            ->ajax(true)
             ->inline_create(['entity' => 'tag'])
             ->tab('Recette');
 
@@ -126,6 +129,11 @@ class RecipeCrudController extends CrudController
             ->crop(true)
             ->prefix('storage/')
             ->tab('Recette');
+    }
+
+    public function fetchTags()
+    {
+        return $this->fetch(Tag::class);
     }
 
     /**
