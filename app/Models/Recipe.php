@@ -48,6 +48,10 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereUtensils($value)
  * @mixin \Eloquent
+ *
+ * @property int $views_count
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereViewsCount($value)
  */
 class Recipe extends Model
 {
@@ -69,6 +73,7 @@ class Recipe extends Model
         'price',
         'quantity',
         'advice',
+        'views_count',
     ];
     protected $casts = [
         'ingredients' => 'object',
@@ -109,8 +114,10 @@ class Recipe extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
-    public function rating()
+    public function openRecipe()
     {
-        return $this->hasOne(RatingRecipe::class);
+        $link = config('recipe.client_url')."/recette/$this->slug";
+
+        return '<a href="'.$link.'" target="_blank" class="btn btn-sm btn-secondary" data-button-type="delete"><i class="la la-eye"></i> Voir la recette</a>';
     }
 }

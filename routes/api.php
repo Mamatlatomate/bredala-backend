@@ -18,8 +18,10 @@ Route::group([
     'namespace'  => 'Api',
 ], function () {
     Route::get('/recipes', 'RecipeController@index')->name('recipes.index');
-    Route::get('/recipe/{recipe}', 'RecipeController@show')->name('recipes.show');
+    Route::get('/recipes/by-views', 'RecipeController@byViews')->name('recipes.by-views');
+    Route::get('/recipe/{recipe}', 'RecipeController@show')->name('recipe.show');
+    Route::post('/recipe/count-view/{recipe}', 'RecipeController@countView')->name('recipe.count-view');
 
     Route::get('/tags', 'TagController@index')->name('tags.index');
-    Route::get('/tag/{tag}', 'TagController@show')->name('tags.show');
+    Route::get('/tag/{tag}', 'TagController@show')->name('tag.show');
 });

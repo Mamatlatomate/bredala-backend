@@ -19,7 +19,6 @@ class RecipeCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
     /**
@@ -43,6 +42,8 @@ class RecipeCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::addButtonFromModelFunction('line', 'open_recipe', 'openRecipe', 'beginning');
+
         CRUD::column('image')->type('closure')->label('Image')->function(function (Recipe $recipe) {
             if ($recipe->image) {
                 return '<a href="'.url($this->crud->route.'/'.$recipe->getKey().'/edit').'"><img src="/storage/'.$recipe->image.'" width="80"/></a>';
