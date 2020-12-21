@@ -116,7 +116,7 @@ class Recipe extends Model
 
     public function openRecipe()
     {
-        $link = config('recipe.client_url')."/recette/$this->slug";
+        $link = config('recipe.client_url')."/recette/$this->slug?previsualisation=true";
 
         return '<a href="'.$link.'" target="_blank" class="btn btn-sm btn-secondary" data-button-type="delete"><i class="la la-eye"></i> Voir la recette</a>';
     }
