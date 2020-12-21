@@ -14,7 +14,7 @@ class AddRecipesViewsCountColumn extends Migration
     public function up()
     {
         Schema::table('recipes', function (Blueprint $table) {
-            $table->bigInteger('views_count')->after('advice');
+            $table->bigInteger('views_count')->after('advice')->default(0);
         });
     }
 
