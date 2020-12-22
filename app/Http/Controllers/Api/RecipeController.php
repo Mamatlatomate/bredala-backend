@@ -9,7 +9,7 @@ class RecipeController extends ApiController
 {
     public function index()
     {
-        $recipes = Recipe::orderBy('created_at')->get();
+        $recipes = Recipe::orderByDesc('created_at')->get();
 
         return fractal($recipes, new RecipeTransformer());
     }

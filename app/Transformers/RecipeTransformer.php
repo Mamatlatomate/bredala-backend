@@ -19,7 +19,7 @@ class RecipeTransformer extends TransformerAbstract
         if ($recipe->image) {
             $attributes['images'] = [
                 'thumbnail' => image_cache($recipe->image, 'small'),
-                'classic'   => image_cache($recipe->image, 'medium'),
+                'classic'   => image_cache($recipe->image, 'large'),
             ];
         }
 
