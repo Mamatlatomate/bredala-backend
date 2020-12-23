@@ -23,7 +23,7 @@ return [
     // ----
 
     // Project name. Shown in the window title.
-    'project_name' => 'Bredala Admin',
+    'project_name' => 'Bredlas Admin',
 
     // When clicking on the admin panel's top-left logo/name,
     // where should the user be redirected?
@@ -70,7 +70,7 @@ return [
     // ------
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => '<b>B</b>redala',
+    'project_logo'   => '<b>B</b>redlas',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,
