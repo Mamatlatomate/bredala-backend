@@ -77,7 +77,7 @@ class RecipeCrudController extends CrudController
         CRUD::field('difficulty')
             ->type('select_from_array')
             ->label('Difficulté')
-            ->options(['Facile', 'Moyenne', 'Difficile'])
+            ->options(['Facile' => 'Facile', 'Moyenne' => 'Moyenne', 'Difficile' => 'Difficile'])
             ->size(6)
             ->tab('Recette');
 
