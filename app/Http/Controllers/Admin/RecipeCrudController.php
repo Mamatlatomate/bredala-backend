@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Tag;
 use App\Models\Recipe;
+use App\Models\Utensil;
 use App\Http\Requests\RecipeRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -44,14 +45,26 @@ class RecipeCrudController extends CrudController
     {
         CRUD::addButtonFromModelFunction('line', 'open_recipe', 'openRecipe', 'beginning');
 
-        CRUD::column('image')->type('closure')->label('Image')->function(function (Recipe $recipe) {
-            if ($recipe->image) {
-                return '<a href="'.url($this->crud->route.'/'.$recipe->getKey().'/edit').'"><img src="/storage/'.$recipe->image.'" width="80"/></a>';
-            }
+        CRUD::column('image')
+            ->type('closure')
+            ->label('Image')
+            ->function(function (Recipe $recipe) {
+                if ($recipe->image) {
+                    return '<a href="'.url($this->crud->route.'/'.$recipe->getKey().'/edit').'"><img src="/storage/'.$recipe->image.'" width="80"/></a>';
+                }
 
-            return '';
-        });
+                return '';
+            });
         CRUD::column('title')->type('text')->label('Titre');
+        CRUD::column('status')
+            ->type('closure')
+            ->label('Statut')
+            ->function(function (Recipe $recipe) {
+                $class = 'published' == $recipe->status ? 'badge-success' : 'badge-warning';
+                $text = 'published' == $recipe->status ? 'Publiée' : 'Brouillon';
+
+                return '<span class="badge '.$class.'">'.$text.'</span>';
+            });
     }
 
     /**
@@ -100,8 +113,6 @@ class RecipeCrudController extends CrudController
             ->label('Les conseils de Mamema')
             ->tab('Recette');
 
-        CRUD::field('body')->type('ckeditor')->label('Contenu')->tab('Contenu');
-
         CRUD::field('ingredients')
             ->type('table')
             ->label('Ingrédients')
@@ -110,10 +121,13 @@ class RecipeCrudController extends CrudController
             ->tab('Recette');
 
         CRUD::field('utensils')
-            ->type('table')
+            ->type('relationship')
             ->label('Ustensiles')
-            ->columns(['name' => 'Nom'])
-            ->entity_singular('un ustensile')
+            ->ajax(true)
+            ->inline_create([
+                'entity'      => 'utensil',
+                'modal_class' => 'modal-dialog modal-xl',
+            ])
             ->tab('Recette');
 
         CRUD::field('tags')
@@ -130,11 +144,24 @@ class RecipeCrudController extends CrudController
             ->crop(true)
             ->prefix('storage/')
             ->tab('Recette');
+
+        CRUD::field('status')
+            ->type('select_from_array')
+            ->label('Statut')
+            ->options(['published' => 'Publiée', 'draft' => 'Brouillon'])
+            ->tab('Recette');
+
+        CRUD::field('body')->type('ckeditor')->label('Contenu')->tab('Contenu');
     }
 
     public function fetchTags()
     {
         return $this->fetch(Tag::class);
+    }
+
+    public function fetchUtensils()
+    {
+        return $this->fetch(Utensil::class);
     }
 
     /**

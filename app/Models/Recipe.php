@@ -52,6 +52,11 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
  * @property int $views_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereViewsCount($value)
+ *
+ * @property string   $status
+ * @property int|null $utensils_count
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereStatus($value)
  */
 class Recipe extends Model
 {
@@ -66,7 +71,6 @@ class Recipe extends Model
         'slug',
         'body',
         'ingredients',
-        'utensils',
         'image',
         'duration',
         'difficulty',
@@ -74,10 +78,10 @@ class Recipe extends Model
         'quantity',
         'advice',
         'views_count',
+        'status',
     ];
     protected $casts = [
         'ingredients' => 'object',
-        'utensils'    => 'object',
     ];
 
     public function sluggable()
@@ -112,6 +116,11 @@ class Recipe extends Model
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function utensils()
+    {
+        return $this->belongsToMany(Utensil::class);
     }
 
     public function openRecipe()
