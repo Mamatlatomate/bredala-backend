@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\ImageTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -57,6 +58,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
  * @property int|null $utensils_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereStatus($value)
+ * @method static Builder|Recipe published()
  */
 class Recipe extends Model
 {
@@ -128,5 +130,10 @@ class Recipe extends Model
         $link = config('recipe.client_url')."/recette/$this->slug?previsualisation=true";
 
         return '<a href="'.$link.'" target="_blank" class="btn btn-sm btn-secondary" data-button-type="delete"><i class="la la-eye"></i> Voir la recette</a>';
+    }
+
+    public function scopePublished(Builder $builder)
+    {
+        return $builder->whereStatus('published');
     }
 }

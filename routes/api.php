@@ -24,4 +24,7 @@ Route::group([
 
     Route::get('/tags', 'TagController@index')->name('tags.index');
     Route::get('/tag/{tag}', 'TagController@show')->name('tag.show');
+
+    Route::get('/utensils', 'UtensilController@index')->name('utensils.index');
+    Route::get('/utensil/{utensil}', 'UtensilController@show')->name('utensil.show');
 });

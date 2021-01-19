@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Tag;
 use App\Models\Recipe;
+use App\Models\Utensil;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,10 @@ class ApiController extends Controller
 
         Route::bind('tag', function ($slug) {
             return Tag::whereSlug($slug)->firstOrFail();
+        });
+
+        Route::bind('utensil', function ($slug) {
+            return Utensil::whereSlug($slug)->firstOrFail();
         });
     }
 }
