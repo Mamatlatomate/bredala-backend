@@ -17,7 +17,7 @@ class UtensilTransformer extends TransformerAbstract
         if ($utensil->image) {
             $attributes['images'] = [
                 'thumbnail' => image_cache($utensil->image, 'small'),
-                'classic'   => image_cache($utensil->image, 'large'),
+                'classic'   => image_cache($utensil->image, 'utensil'),
             ];
         }
 

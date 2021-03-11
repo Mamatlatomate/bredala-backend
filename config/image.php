@@ -34,5 +34,9 @@ return [
             'width'  => 1800,
             'height' => 1800,
         ],
+        'utensil' => [
+            'width'  => 250,
+            'height' => 200,
+        ],
     ],
 ];
