@@ -6,3 +6,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('tag') }}'><i class='nav-icon la la-tags'></i> Catégories</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('utensil') }}'><i class='nav-icon la la-utensil-spoon'></i> Ustensiles</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cogs'></i> Paramètres</a></li>

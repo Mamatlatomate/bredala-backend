@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Tag;
 use App\Models\Recipe;
+use App\Models\Setting;
 use App\Models\Utensil;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ class ApiController extends Controller
 
         Route::bind('utensil', function ($slug) {
             return Utensil::whereSlug($slug)->firstOrFail();
+        });
+
+        Route::bind('settingKey', function ($key) {
+            return Setting::where('key', '=', $key)->firstOrFail();
         });
     }
 }

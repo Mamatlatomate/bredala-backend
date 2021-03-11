@@ -27,4 +27,6 @@ Route::group([
 
     Route::get('/utensils', 'UtensilController@index')->name('utensils.index');
     Route::get('/utensil/{utensil}', 'UtensilController@show')->name('utensil.show');
+
+    Route::get('setting/{settingKey}', 'SettingController@show')->name('settings.show');
 });
