@@ -139,10 +139,19 @@ class RecipeCrudController extends CrudController
 
         CRUD::field('image')
             ->type('image')
-            ->label('Image')
+            ->label('Image de vignette')
             ->upload(true)
             ->crop(true)
             ->prefix('storage/')
+            ->tab('Recette');
+
+        CRUD::field('banner')
+            ->type('image')
+            ->label('Bannière')
+            ->upload(true)
+            ->crop(false)
+            ->prefix('storage/')
+            ->hint('Taille de la bannière : 1280 x 320')
             ->tab('Recette');
 
         CRUD::field('status')

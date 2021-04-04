@@ -38,5 +38,10 @@ return [
             'width'  => 250,
             'height' => 200,
         ],
+
+        'banner' => [
+            'width'  => 1280,
+            'height' => 320,
+        ],
     ],
 ];

@@ -59,6 +59,10 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Recipe whereStatus($value)
  * @method static Builder|Recipe published()
+ *
+ * @property string|null $banner
+ *
+ * @method static Builder|Recipe whereBanner($value)
  */
 class Recipe extends Model
 {
@@ -74,6 +78,7 @@ class Recipe extends Model
         'body',
         'ingredients',
         'image',
+        'banner',
         'duration',
         'difficulty',
         'price',
@@ -99,7 +104,8 @@ class Recipe extends Model
     public function imageable()
     {
         return [
-            'image' => 'recipes',
+            'image'  => 'recipes',
+            'banner' => 'banners',
         ];
     }
 

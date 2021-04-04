@@ -17,17 +17,10 @@ class RecipeTransformer extends TransformerAbstract
         $attributes = $recipe->toArray();
         $attributes['body'] = str_replace('src="/', "src=\"{$url}/", $recipe->body);
 
-        if ($recipe->image) {
-            $attributes['images'] = [
-                'thumbnail' => image_cache($recipe->image, 'small'),
-                'classic'   => image_cache($recipe->image, 'large'),
-            ];
-        }
+        $attributes['thumbnail'] = image_cache($recipe->image, 'small');
+        $attributes['banner'] = image_cache($recipe->banner ?? $recipe->image, 'banner');
 
-        unset(
-            $attributes['id'],
-            $attributes['image'],
-        );
+        unset($attributes['id']);
 
         return $attributes;
     }
